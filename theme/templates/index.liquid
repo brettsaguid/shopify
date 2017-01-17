@@ -1,0 +1,43 @@
+{% if settings.use_slider %}
+{% include 'home-slider' %}
+{% endif %}
+
+<div id="content">
+  <div class="container"> 
+
+    
+    {% unless settings.featured_images_content == 'none' %}
+    {% include 'home-ads' %}
+    {% endunless %}
+    
+
+                      
+    {% if settings.use_home_cta %}
+    {% include 'home-cta' %}
+    {% endif %}
+
+    {% if settings.use_page_content %}
+        <div class="rte">
+        {% if page_title != blank %}
+          {{ pages[settings.page_title].content }}
+        {% else %}
+          <p>{{ 'home_page.sections.no_page' | t }}</p>
+        {% endif %}
+        </div>
+    {% endif %}
+    <div style="text-align:center;">
+    <iframe width="853" height="480" src="https://www.youtube.com/embed/YLTq7CmMtic" frameborder="0" allowfullscreen></iframe>
+        <a href="http://www.fibrofix.com/pages/wellness-hour
+                 "></div><br /><br />
+<img src=https://cdn.shopify.com/s/files/1/1258/4853/files/leadermedic3_1_df34b17d-1f52-4252-ae2f-a18b7bcb0f9a.png?9010058996293598051" alt=“Wellness Hour" align="middle">
+</a>
+    {% if settings.use_featured_products %}
+      {% include 'home-featured-products' %}
+    {% endif %}
+    
+
+    {% if settings.use_instagram_widget %}
+      {% include 'home-instagram' %}
+    {% endif %}
+  </div>
+</div>
