@@ -1,0 +1,42 @@
+<div class="col-md-3 col-sm-4">
+  <div class="sidebar">
+    {% if settings.show_sidebar_recent_posts %}
+    <div class="side_box side_box_2 red5 animated" data-animation="bounceInRight">
+      <h5>{{ settings.sidebar_recent_posts_title }}</h5>
+      <ul>
+        {% for article in blog.articles limit:6 %}
+        <li>
+          {% if article.excerpt.size > 0 %}
+          <div class="post_img"><a href="{{ article.url }}">{{ article.excerpt }}</a></div>
+          {% endif %}
+          <div class="post_detail">
+            <a href="{{ article.url }}">{{ article.title }}</a><br />
+            <span class="date">{{ article.published_at | date: '%b %d, %Y' }}</span>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    {% if settings.show_sidebar_blog_tags %}
+    <div class="side_box side_box_3 red5 clearfix  animated" data-animation="bounceInRight">
+      <h5>{{ settings.sidebar_blog_tags_title }}</h5>
+      {% if blog.tags.size > 0 %}
+      <ul>
+        {% for tag in blog.tags %}
+        {% if current_tags contains tag %}
+        <li>{{ tag }}</li>
+        {% else %}
+        <li>{{ tag | link_to_tag: tag }}</li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+      {% else %}
+      <ul>
+        <li>Add tags to your blog posts for them to appear here.</li>
+      </ul>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>
